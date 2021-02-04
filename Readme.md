@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Дмитрий Рябинин](https://up.htmlacademy.ru/react/6/user/63289).
-* Наставник: `Неизвестно`.
+* Наставник: [Мария Климникова](https://up.htmlacademy.ru/react/6/user/1229683).
 
 ---
 
