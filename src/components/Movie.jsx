@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Movie = (props) => {
+const Movie = () => {
 
   return (
     <article className="small-movie-card catalog__movies-card">
@@ -12,6 +12,6 @@ const Movie = (props) => {
       </h3>
     </article>
   );
-}
+};
 
 export default Movie;
