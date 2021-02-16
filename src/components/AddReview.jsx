@@ -1,17 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Rating = (props) => {
   const {number} = props;
-  return <React.Fragment>
-    <input className="rating__input" id={`start-${number}`} type="radio" name="rating" value={number}/>
-    <label className="rating__label" for={`start-${number}`}>Rating {number}</label>
-  </React.Fragment>
+  return (
+    <React.Fragment>
+      <input className="rating__input" id={`start-${number}`} type="radio" name="rating" value={number}/>
+      <label className="rating__label" htmlFor={`start-${number}`}>Rating {number}</label>
+    </React.Fragment>
+  );
 };
-
+Rating.propTypes = {
+  number: PropTypes.number,
+};
 
 const AddReview = () => (
   <section className="movie-card movie-card--full">
-    <div classNameName="movie-card__header">
+    <div className="movie-card__header">
       <div className="movie-card__bg">
         <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
       </div>
