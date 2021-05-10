@@ -1,6 +1,8 @@
 import React from 'react';
-import Movie from './Movie';
 import PropTypes from 'prop-types';
+import Header from './Header';
+import Movie from './Movie';
+import MovieList from './MovieList';
 
 const Main = (props) => {
   const {title, genre, year, movies} = props;
@@ -12,21 +14,7 @@ const Main = (props) => {
 
       <h1 className="visually-hidden">WTW</h1>
 
-      <header className="page-header movie-card__head">
-        <div className="logo">
-          <a className="logo__link">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </a>
-        </div>
-
-        <div className="user-block">
-          <div className="user-block__avatar">
-            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <div className="movie-card__wrap">
         <div className="movie-card__info">
@@ -97,9 +85,7 @@ const Main = (props) => {
           </li>
         </ul>
 
-        <div className="catalog__movies-list">
-          {movies.map((_, i) => <Movie key={i}/>)}
-        </div>
+        <MovieList movies={movies} />
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
@@ -127,7 +113,7 @@ Main.propTypes = {
   title: PropTypes.string,
   genre: PropTypes.string,
   year: PropTypes.string,
-  movies: PropTypes.array,
+  movies: PropTypes.arrayOf(PropTypes.shape(Movie.propTypes)),
 };
 
 export default Main;

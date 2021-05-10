@@ -20,17 +20,35 @@ const App = (props) => {
           <SignIn></SignIn>
         </Route>
         <Route path="/mylist" exact>
-          <MyList></MyList>
+          <MyList movies={props.movies}></MyList>
         </Route>
-        <Route path="/films/:id" exact>
-          <MoviePage></MoviePage>
-        </Route>
-        <Route path="/films/:id/review" exact>
-          <AddReview></AddReview>
-        </Route>
-        <Route path="/player/:id" exact>
-          <Player></Player>
-        </Route>
+        <Route
+          path="/films/:id/addreview"
+          exact
+          render={(routeProps) => {
+            const {id} = routeProps.match.params;
+            const movie = props.movies.find((it) => it.id === Number.parseInt(id, 10));
+            return (movie) ? <AddReview movie={movie}></AddReview> : <NotFound></NotFound>;
+          }}
+        ></Route>
+        <Route
+          path="/films/:id"
+          exact
+          render={(routeProps) => {
+            const {id} = routeProps.match.params;
+            const movie = props.movies.find((it) => it.id === Number.parseInt(id, 10));
+            return (movie) ? <MoviePage movie={movie} likeThis={props.movies.slice(0, 4)}></MoviePage> : <NotFound></NotFound>;
+          }}
+        ></Route>
+        <Route
+          path="/player/:id"
+          exact
+          render={(routeProps) => {
+            const {id} = routeProps.match.params;
+            const movie = props.movies.find((it) => it.id === Number.parseInt(id, 10));
+            return (movie) ? <Player movie={movie}></Player> : <NotFound></NotFound>;
+          }}
+        ></Route>
         <Route>
           <NotFound></NotFound>
         </Route>
